@@ -18,6 +18,89 @@
   scroll-behavior: smooth;
 }
 
+/* Animaciones personalizadas */
+.animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+/* Mejorar el rendimiento de las animaciones */
+.animate__fadeInLeft,
+.animate__fadeInRight,
+.animate__fadeInUp {
+  will-change: transform, opacity;
+}
+
+/* Asegurar que los elementos invisible no interfieran */
+.opacity-0 {
+  opacity: 0;
+}
+
+/* Estilos para el navbar fijo con animaciones */
+.navbar {
+  will-change: padding, transform;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar:hover {
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Asegurar que el navbar fijo tenga fondo sólido */
+.navbar {
+  position: relative;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #00040f;
+  opacity: 0.95;
+  z-index: -1;
+}
+
+/* Optimización para elementos que se escalan */
+.navbar img,
+.navbar a,
+.navbar li {
+  will-change: transform, font-size, width, height;
+}
+
+/* Suavizar transiciones en enlaces */
+.navbar a {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
+
+/* Mejorar la experiencia en móvil */
+@media (max-width: 640px) {
+  .navbar:hover {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
 .text-gradient {
   background: radial-gradient(
     64.18% 64.18% at 71.16% 35.69%,
